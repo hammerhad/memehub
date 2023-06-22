@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'contact' %}">
+    {% csrf_token %}
+    <label for="id_name">Name:</label>
+    {{ form.name }}
+    <label for="id_email">Email:</label>
+    {{ form.email }}
+    <label for="id_message">Message:</label>
+    {{ form.message }}
+    <button type="submit">Submit</button>
+</form>

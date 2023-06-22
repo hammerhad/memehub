@@ -1,0 +1,1225 @@
+
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png'%}">
+    <!-- Site Title  -->
+    <title>Memehub | Unleash Your Meme-agination!</title>
+    <!-- Bundle and Base CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor.bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style-azalea.css' %}">
+    <!-- Extra CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+</head>
+
+<body class="nk-body body-wider bg-theme mode-onepage">
+    <div class="nk-wrap">
+        <header class="nk-header page-header is-transparent is-sticky is-dark" id="header">
+            <!-- Header @s -->
+            <div class="header-main">
+                <div class="header-container container container-xxl">
+                    <div class="header-wrap">
+                        <!-- Logo @s -->
+                        <div class="header-logo logo">
+                            <a href="./" class="logo-link">
+                                <img class="logo-dark" src="{% static 'images/logo-s2-white.png' %}" srcset="{% static 'images/logo-s2-white2x.png' %}" alt="logo">
+                                <img class="logo-light" src="{% static 'images/logo-s2-white.png' %}" srcset="{% static 'images/logo-s2-white2x.png' %}" alt="logo">
+                            </a>
+                        </div>
+                        <!-- Menu Toogle @s -->
+                        <div class="header-nav-toggle">
+                            <a href="#" class="navbar-toggle" data-menu-toggle="header-menu">
+                                <div class="toggle-line">
+                                    <span></span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Menu @s -->
+                        <div class="header-navbar">
+                            <nav class="header-menu" id="header-menu">
+                                <ul class="menu">
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#homescroll">Home</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#ecosystems">Ecosystem</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#platform">Platform</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#tokensale">Tokensale</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#roadmap">Roadmap</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#docs">Docs</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link menu-toggle" href="#contact">Contact</a>
+                                    </li>
+                                </ul>
+                                <ul class="menu-btns">
+                                    <li><a href="#" id="connectBtn" class="btn btn-md btn-thin btn-outline btn-auto btn-primary btn-round no-change"><span>Connect Wallet</span></a></li>
+                                </ul>
+                            </nav>
+                        </div><!-- .header-navbar @e -->
+                    </div>
+                </div>
+            </div><!-- .header-main @e -->
+            <div class="banner banner-fs has-gfx tc-light" id="homescroll">
+                <div class="nk-block nk-block-sm nk-block-header my-auto">
+                    <div class="container container-xxl pt-5">
+                        <div class="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
+                            <div class="col-lg-6 order-lg-last">
+                                <div class="banner-gfx banner-gfx-auto">
+                                    <img src="{% static 'images/azalea/gfx-e.png' %}" alt="header">
+                                </div>
+                            </div><!-- .col -->
+                            <div class="col-xl-5 col-lg-6 col-sm-10 text-center text-lg-start">
+                                <div class="banner-caption">
+                                    <h1 class="title title-lg ttu">Welcome to Memehub: Unleash Your Meme-agination!</h1>
+                                    <p class="lead">Step into the Memehub Universe: Where Memes Come Alive, Communities Flourish, and Rewards Await with Memehub Token (MEMEH) </p>
+                                    <div class="cpn-action">
+                                        <a class="btn btn-primary btn-round" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div>
+                </div>
+                <div class="nk-block nk-block-status">
+                    <div class="container container-xxl">
+                        <div class="row gutter-vr-40px justify-content-between">
+                            <div class="col-xxl-6 col-xl-5 col-lg-5">
+                                <div class="progress-wrap progress-wrap-point">
+                                    <ul class="progress-info progress-info-s2">
+                                        <li>Sold - <span>54,791,952 Tokens</span></li>
+                                        <li class="text-end">Target - <span>500,000,000 Tokens</span></li>
+                                    </ul>
+                                    <div class="progress-bar progress-bar-xs">
+                                        <div class="progress-percent progress-percent-s2" data-percent="10.958390399999999"></div>
+                                        <div class="progress-point" data-point="25">Soft Cap</div>
+                                        <!-- <div class="progress-point" data-point="55">Crowdsale</div> -->
+                                        <div class="progress-point" data-point="85">Hard Cap</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-5 col-xl-6 col-lg-7 text-center text-sm-start">
+                                <div class="row justify-content-around gutter-vr-30px">
+                                    <div class="col-sm-4 col-md-6 col-lg-4 col-xl-5">
+                                        <div class="status-info">
+                                            <h6 class="title title-xxs tc-default status-title ttu">Current Bonus</h6>
+                                            <h3 class="fz-3 fw-3 status-percent">5%</h3>
+                                            <div class="fz-8">Contributors can receive</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-md-6 col-lg-7 col-xl-7">
+                                        <div class="status-countdown float-sm-end">
+                                            <h6 class="title title-xxs tc-default status-title ttu">First Stage Ends In</h6>
+                                            <div class="countdown justify-content-center justify-content-sm-start countdown-s3 countdown-s3-alt" data-date="2023/07/20" data-min-text="Minutes" data-sec-text="Seconds"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nk-block nk-block-actions">
+                    <div class="container container-xxl">
+                        <div class="row gutter-vr-40px align-items-center">
+                            <div class="col-sm-7 d-flex justify-content-center justify-content-sm-start">
+                                <ul class="btn-grp btn-grp-break justify-content-center justify-content-sm-start gutter-vr-20px">
+                                    <li><a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="link link-light link-break video-popup"><em class="icon-circle icon-border icon-animation fas fa-play"></em><span>How it Works</span></a></li>
+                                    <li><a href="#popup1" class="link link-light link-break"><em class="icon-circle icon-border far fa-lightbulb"></em><span>Why buy Tokens now?</span></a></li>
+                                </ul>
+                            </div>
+                            <div id="popup1" class="overlay">
+                                <div class="popup">
+                                    <h2 style="text-align: center;">Why buy Tokens now?</h2>
+                                    <a class="close" href="#homescroll">&times;</a>
+                                    <div class="content">
+                                        <br>
+                                        Buying tokens now offers several compelling reasons:
+                                        <br>
+                                        <br>
+                                        Capitalize on Early Investment Advantage: Purchasing tokens during the early stages can be advantageous due to the potential for price appreciation. In the case of our token, the presale price will gradually increase over time. By buying now at the initial price of $0.0001, you can potentially benefit from future price increases. For instance, after stage one, the price will rise to $0.00015, then further increase to $0.0002, and finally reach $0.0005 upon launch.
+                                        <br>
+                                        <br>
+                                        Access Exclusive Features and Benefits: Owning tokens provides access to various exclusive features and benefits within the Memehub platform. These tokens can be used to disable ads, unlock premium features like meme creator pro tools, and avail yourself of other exciting functionalities. By acquiring tokens early, you secure the means to enhance your Memehub experience and enjoy additional perks not available to non-token holders.
+                                        <br>
+                                        <br>
+                                        Support and Tip Your Favorite Creators: Tokens serve as a medium for supporting and appreciating the meme creators on Memehub. With your tokens, you can tip your favorite creators, encouraging their creativity and rewarding their contributions. This fosters a vibrant and supportive community where creators are incentivized to continue producing high-quality content.
+                                        <br>
+                                        <br>
+                                        Participate in the Memehub Economy: The Memehub platform is designed to create a self-sustaining meme economy, where the value of creativity and engagement is recognized and rewarded. By purchasing tokens now, you actively participate in this economy and contribute to its growth. As the platform evolves and expands, your tokens can play a vital role in various transactions, exchanges, and interactions within the Memehub ecosystem.
+                                        <br>
+                                        <br>
+                                        Potential Investment Opportunities: Buying tokens now presents an investment opportunity. As the Memehub platform gains traction and attracts more users, the demand for tokens may increase, potentially driving up their value. If you believe in the long-term success of Memehub and its potential to revolutionize the meme-sharing industry, investing in tokens now allows you to position yourself for potential financial gains as the platform flourishes.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <ul class="social-links social-links-s2 justify-content-center justify-content-sm-end">
+                                    <li><a href="#"><em class="fab fa-twitter"></em></a></li>
+                                    <li><a href="#"><em class="fab fa-telegram"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-facebook-f"></em></a></li> -->
+                                    <li><a href="#"><em class="fab fa-youtube"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-bitcoin"></em></a></li> -->
+                                    <li><a href="#"><em class="fab fa-github"></em></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="nk-pages tc-light">
+
+
+
+
+            <!-- // -->
+            
+            <section class="section" id="mvp">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="Get Your MEMEH">Airdrop</h2>
+                                <p>Get Free Memeh Tokens Now - Join Airdrop!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row align-items-center justify-content-center justify-content-xl-between gutter-vr-30px">
+                            <div class="col-xxl-6 col-xl-6 col-lg-8">
+                                <div class="nk-block-img nk-block-plx">
+                                    <img class="shadow rounded" src="{% static 'images/app-screens/sc-medium-b.png' %}" alt="">
+                                    <img class="nk-block-img-plx plx-screen shadow rounded" src="{% static 'images/app-screens/sc-small-d.jpg' %}" alt="">
+                                    <img class="nk-block-img-plx plx-circle plx-circle-s1" src="{% static 'images/gfx/circle-a.png' %}" alt="">
+                                    <img class="nk-block-img-plx plx-polygon plx-polygon-s1" src="{% static 'images/gfx/polygon-a.png' %}" alt="">
+                                    <img class="nk-block-img-plx plx-triangle plx-triangle-s1" src="{% static 'images/gfx/triangle-a.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xxl-5 col-xl-6 col-lg-8">
+                                <div class="nk-block-text">
+                                    <div class="feature feature-inline">
+                                        <div class="feature-icon feature-icon-md">
+                                            <em class="icon icon-xs icon-circle fas fa-check"></em>
+                                        </div>
+                                        <div class="feature-text">
+                                            <p>Claim your free tokens with no obligations attached and follow us on Twitter for super fast info updates.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature feature-inline">
+                                        <div class="feature-icon feature-icon-md">
+                                            <em class="icon icon-xs icon-circle fas fa-check"></em>
+                                        </div>
+                                        <div class="feature-text">
+                                            <p>Retweet our post on Twitter, like our Facebook page, or join our Telegram group to spread the word and earn referral rewards.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature feature-inline">
+                                        <div class="feature-icon feature-icon-md">
+                                            <em class="icon icon-xs icon-circle fas fa-check"></em>
+                                        </div>
+                                        <div class="feature-text">
+                                            <p>Stay informed about our dynamic community and token updates by joining our Telegram group and subscribing to our newsletter.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature feature-inline">
+                                        <div class="feature-icon feature-icon-md">
+                                            <em class="icon icon-xs icon-circle fas fa-check"></em>
+                                        </div>
+                                        <div class="feature-text">
+                                            <p>Contribute to the growth of the token's value through active engagement on our social media platforms, such as Twitter, Facebook, and Telegram.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature feature-inline">
+                                        <div class="feature-icon feature-icon-md">
+                                            <em class="icon icon-xs icon-circle fas fa-check"></em>
+                                        </div>
+                                        <div class="feature-text">
+                                            <p>Join our thriving ecosystem, connect with like-minded individuals, and unlock exciting opportunities by becoming part of our Telegram community.</p>
+                                        </div>
+                                    </div>
+                                    <form class="nk-form-submit" method="post" action="{% url 'claim_airdrop' %}">
+                                        {% csrf_token %}
+                                        <div class="field-item">
+                                            <label class="field-label ttu">Referral</label>
+                                            <div class="field-wrap">
+                                                <input name="referral" placeholder="Paste Referral Address" type="text" class="input-bordered">
+                                                
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedAccount" name="selectedAccount" value="">
+                                        <div class="row">
+                                            <div class="text-center text-sm-start">
+                                                <button type="submit" class="btn btn-round btn-primary">Claim Airdrop</button>
+                                            </div>
+                                            <div class="col-sm-7 order-sm-first">
+                                                <div class="form-results"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+
+
+
+
+
+
+
+            <section class="section" id="ecosystems">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="Core Ecosystems">ECOSYSTEMS</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row text-center align-items-lg-start gutter-vr-40px">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="feature feature-s6 feature-s6-1">
+                                    <div class="feature-text">
+                                        <h5 class="title title-sm ttu">Content Discovery</h5>
+                                        <p>Memehub provides powerful 
+                                            algorithms and intuitive browsing 
+                                            options to help users explore a 
+                                            vast collection of memes. 
+                                            Whether you're looking for 
+                                            trending memes, specific 
+                                            categories, or personalized 
+                                            recommendations, Memehub's
+                                            content discovery features ensure 
+                                            that you never miss out on the 
+                                            best and funniest memes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="feature feature-s6 feature-s6-2">
+                                    <div class="feature-text">
+                                        <h5 class="title title-sm ttu">Creator Tools</h5>
+                                        <p>Memehub empowers meme 
+                                            creators with a suite of powerful 
+                                            tools and features to bring their 
+                                            ideas to life. From meme 
+                                            generators to editing tools, 
+                                            creators can unleash their 
+                                            imagination and craft memes 
+                                            that resonate with the 
+                                            community. Memehub is 
+                                            committed to providing creators 
+                                            with the resources they need to 
+                                            express their creativity and gain 
+                                            recognition for their work.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="feature feature-s6 feature-s6-3">
+                                    <div class="feature-text">
+                                        <h5 class="title title-sm ttu">Community 
+                                            Engagement</h5>
+                                        <p>Memehub is all about building a 
+                                            vibrant and engaged community. 
+                                            Users can react, comment, and 
+                                            share memes, fostering lively 
+                                            discussions and interactions. 
+                                            Memehub encourages 
+                                            collaboration, allowing users to 
+                                            co-create memes and engage in 
+                                            friendly competitions. The 
+                                            platform's emphasis on 
+                                            community-driven engagement 
+                                            sets it apart from traditional social 
+                                            media platforms.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="feature feature-s6 feature-s6-4">
+                                    <div class="feature-text">
+                                        <h5 class="title title-sm ttu">Reward System</h5>
+                                        <p>Memehub recognizes the value 
+                                            of user participation and rewards 
+                                            meme creators for their 
+                                            contributions. Through a fair and 
+                                            transparent reward system, 
+                                            creators can earn MEMEH based 
+                                            on the reactions and 
+                                            engagement their memes 
+                                            receive. This incentivizes high-quality content creation and 
+                                            motivates creators to continue 
+                                            entertaining and engaging the 
+                                            Memehub community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-image bg-contain bg-bottom-center bg-ecosystems">
+                            <img src="{% static 'images/globe-particle.png' %}" alt="globe">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section" id="platform">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="ICOX Products">PLATFORM</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6 col-lg-8">
+                                <ul class="nav tab-nav tab-nav-btn-bdr-s2 justify-content-center justify-content-sm-between pb-4 pb-sm-5">
+                                    <li><a class="active" data-bs-toggle="tab" href="#tab-1-1">FOR Creators</a></li>
+                                    <li class="tab-nav-sap d-none d-sm-block"></li>
+                                    <li><a data-bs-toggle="tab" href="#tab-1-2">For Enthusiasts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tab-1-1">
+                                <div class="row align-items-center justify-content-between gutter-vr-40px">
+                                    <div class="col-lg-6 order-lg-last">
+                                        <div class="nk-block-img nk-block-ca">
+                                            <div class="nk-circle-animation nk-df-center fast"></div><!-- .circle-animation -->
+                                            <img class="shadow rounded" src="{% static 'images/app-screens/sc-medium-a.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="nk-block-text mgb-m30">
+                                            <h2 class="title title-md">Welcome to Memehub:</h2>
+                                            <p>Unleash Your Meme-Generating Superpowers!</p>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-bulb"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Our platform empowers you to create memes that captivate and entertain. With intuitive meme creation tools and a vast library of templates, you can bring your ideas to life and share them with the world. From witty captions to clever visual edits, the possibilities are endless.</p>
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-paricle"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>We believe in rewarding the brilliance of meme creators. As your memes gain traction and engagement, you'll earn Memehub Tokens (MEMEH) based on views, subscribes, and other metrics. These tokens hold real value and can be redeemed for various perks within the Memehub ecosystem.</p>
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-bulb-2"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Unlock exclusive premium features designed to enhance your meme creation process. Access advanced editing tools, custom watermarking, analytics, and more with our Meme Creator Pro subscription. Elevate your memes to the next level and stand out from the crowd.
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-document-2"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>We understand the importance of turning your passion into a sustainable income. Memehub provides opportunities for creators to monetize their memes through partnerships, brand collaborations, and sponsored content. Your creativity can now become a lucrative pursuit.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-1-2">
+                                <div class="row align-items-center justify-content-between gutter-vr-40px">
+                                    <div class="col-lg-6 order-lg-last">
+                                        <div class="nk-block-img nk-block-ca">
+                                            <div class="nk-circle-animation nk-df-center fast"></div><!-- .circle-animation -->
+                                            <img class="shadow rounded" src="{% static 'images/app-screens/sc-medium-b.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="nk-block-text mgb-m30">
+                                            <h2 class="title title-md">Welcome to Memehub:</h2>
+                                            <p>Your Gateway to Memes That Make You Laugh, Think, and Share!</p>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-bulb"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Prepare to dive into a vast ocean of memes! Memehub curates a diverse collection of trending memes, niche genres, and hidden gems, ensuring there's always something new and exciting to explore. From relatable jokes to clever visual humor, you'll find memes that resonate with your sense of humor.</p>
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-paricle"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Don't keep the laughter to yourself! Memehub encourages you to share the joy by easily sharing your favorite memes with friends, family, and across your social networks. Spread the humor, spark conversations, and brighten someone's day with the power of a well-crafted meme.</p>
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-bulb-2"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Customize your Memehub experience by subscribing to specific meme categories that align with your interests. Whether you're into dank memes, wholesome humor, animal antics, or geeky references, our platform ensures you're always updated with the latest memes in your preferred styles.</p>
+                                                </div>
+                                            </div>
+                                            <div class="feature feature-inline feature-middle">
+                                                <div class="feature-icon feature-icon-md">
+                                                    <em class="icon icon-md icon-grd ikon ikon-document-2"></em>
+                                                </div>
+                                                <div class="feature-text">
+                                                    <p>Memehub is more than just a platform; it's a universe where memes come alive. Immerse yourself in the contagious laughter, the witty humor, and the shared experiences that make the meme culture thrive. Memehub is your gateway to the endless wonders of the meme world.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .container -->
+            </section>
+            
+            <!-- // -->
+            <section class="section" id="tokensale">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="Token Details">TOKEN DISTRIBUTION</h2>
+                                <p>Breakdown of our Token Recipients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row align-items-center gutter-vr-50px">
+                            <div class="col-xxl-4 col-lg-6 px-xl-5 order-xl-1">
+                                <canvas class="chart-canvas" id="token-distribution"></canvas>
+                            </div>
+                            <div class="col-xxl-4 col-lg-6">
+                                <ul class="chart-data-s2 row" data-canvas="token-distribution" data-canvas-type="pie" data-border-color="#0f1932">
+                                    <li class="col-sm-8" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Public Sale" data-title="Tokens alocate for Public Sale" data-subtitle="" data-amount="45"></li>
+                                    <li class="col-sm-8" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Private Sale" data-title="Tokens alocate for Pre Sale" data-subtitle="" data-amount="10"></li>
+                                    <li class="col-sm-6" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Reserve Fund" data-title="Reserve Fund" data-subtitle="(6 months lockup)" data-amount="8"></li>
+                                    <li class="col-sm-6" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Marketing" data-title="Marketing Fund" data-subtitle="" data-amount="12"></li>
+                                    <li class="col-sm-6" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Team & Founder" data-title="Team & Founder" data-subtitle="(3 months lockup)" data-amount="15"></li>
+                                    <li class="col-sm-6" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Bounty & Events" data-title="Bounty & Events" data-subtitle="(1 months lockup)" data-amount="6"></li>
+                                    <li class="col-sm-6" data-color="#1f2e4d" data-color-hover="#f42f54" data-label="Advisors & Partners" data-title="Advisors & Partners" data-subtitle="(6 months lockup)" data-amount="4"></li>
+                                </ul>
+                            </div>
+                            <div class="col-xxl-4 col-xl-12 order-last">
+                                <div class="token-info-s2">
+                                    <div class="row gutter-vr-50px">
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-1">
+                                                <div class="token-info-title">Start Time</div>
+                                                <h4 class="token-info-des">22 Jun, 2023</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-1">
+                                                <div class="token-info-title">Token Symbol</div>
+                                                <h4 class="token-info-des">MEMEH</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-2">
+                                                <div class="token-info-title">End Time</div>
+                                                <h4 class="token-info-des">15 Aug, 2023</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-2">
+                                                <div class="token-info-title">Tokens Offered</div>
+                                                <h4 class="token-info-des">500.0 M</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-3">
+                                                <div class="token-info-title">Soft Cap</div>
+                                                <h4 class="token-info-des">125.0 M</h4>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-6 col-xxl-6 col-lg-3">
+                                            <div class="token-info-item color-5">
+                                                <div class="token-info-title">Hard Cap</div>
+                                                <h4 class="token-info-des">425.0 M</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section" id="roadmap">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="Timeline">ROADMAP</h2>
+                                <p>Building the Future of Memehub: Our Roadmap to Success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="roadmap-wrap roadmap-wrap-ovl-right text-center">
+                            <div class="roadmap-line-s2"></div>
+                            <div class="roadmap-slider has-carousel carousel-nav-center" data-blank="true" data-items="5" data-items-tab-l="4" data-items-tab-p="3" data-items-mobile="2" data-margin="-1" data-navs="true">
+                                <div class="roadmap roadmap-s2 roadmap-i1 {{roadmap_1.text}}">
+                                    <h6 class="roadmap-year-s2">Q2 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Jun 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Develop and deploy the Memehub
+                                            Token (MEMEH) on the Binance Smart 
+                                            Chain (BSC).</p>
+                                    </div>
+                                </div>
+                                <div class="roadmap roadmap-s2 roadmap-i2 {{roadmap_2.text}}">
+                                    <h6 class="roadmap-year-s2">Q2 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Jun 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Start of the ICO Crypto Platform and Pre Sale</p>
+                                    </div>
+                                </div>
+                                <div class="roadmap roadmap-s2 roadmap-i3 {{roadmap_3.text}}">
+                                    <h6 class="roadmap-year-s2">Q2 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Jul 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Secure listings on CoinMarketCap, 
+                                            CoinGecko, and other prominent 
+                                            cryptocurrency data platforms.</p>
+                                    </div>
+                                </div>
+                                <div class="roadmap roadmap-s2 roadmap-i4 {{roadmap_4.text}}">
+                                    <h6 class="roadmap-year-s2">Q3 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Aug - Oct 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Finish and launch the Memehub
+                                            platform, a dedicated social media 
+                                            platform for meme enthusiasts.</p>
+                                    </div>
+                                </div>
+                                <div class="roadmap roadmap-s2 roadmap-i5 {{roadmap_5.text}}">
+                                    <h6 class="roadmap-year-s2">Q4 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Oct - Dec 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Connect MEMEH tokens with the 
+                                            Memehub platform, enabling 
+                                            seamless token functionality. <br> Introduce features such as earning 
+                                            tokens for content creators based 
+                                            on reactions and views.</p>
+                                    </div>
+                                </div>
+                                <div class="roadmap roadmap-s2 roadmap-i6 {{roadmap_6.text}}">
+                                    <h6 class="roadmap-year-s2">Q4 2023</h6>
+                                    <h5 class="title title-sm roadmap-date">Oct - Dec 2023</h5>
+                                    <div class="roadmap-text">
+                                        <p>Finish mobile app for Memehub Platform.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+            
+            <!-- // -->
+            
+            <!-- // -->
+            <section class="section" id="docs">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="Downloads">DOCUMENTS</h2>
+                                <p>Download the whitepaper and learn about Memeh Token and Memehub - the universal platform for memes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row gutter-vr-50px">
+                            <div class="col-sm-6 col-lg-3">
+                                
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="doc">
+                                    <div class="doc-photo doc-shape doc-shape-a">
+                                        <img src="{% static 'images/azalea/doc-a.jpg' %}" alt="">
+                                    </div>
+                                    <div class="doc-text">
+                                        <h5 class="doc-title title-sm">White Paper <small>(2023)</small></h5>
+                                        <a class="doc-download" href="{% static 'docs/whitepaper.pdf' %}"><em class="ti ti-import"></em></a>
+                                        <div class="doc-lang">ENGLISH</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="doc">
+                                    <div class="doc-photo doc-shape doc-shape-c">
+                                        <img src="images/azalea/doc-c.jpg" alt="">
+                                    </div>
+                                    <div class="doc-text">
+                                        <h5 class="doc-title title-sm">One Pager <small>(2023)</small></h5>
+                                        <a class="doc-download" href="{% static 'docs/onepager.pdf' %}"><em class="ti ti-import"></em></a>
+                                        <div class="doc-lang">ENGLISH</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+            <!-- <section class="section">
+                <div class="container container-xxl">
+                    <div class="nk-block">
+                        <div class="row justify-content-between gutter-vr-100px">
+                            <div class="col-lg-6">
+                                <div class="section-head section-head-s2 text-center ">
+                                    <h2 class="title" title="Press">IN PRESS</h2>
+                                </div>
+                                <div class="nk-block">
+                                    <div class="has-carousel carousel-nav-center pdb-l" data-items="1" data-navs="true">
+                                        <div class="item pb-3">
+                                            <div class="row justify-content-center gutter-vr-30px">
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/a-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/b-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/c-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/d-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/e-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/f-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/a-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/b-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/c-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item pb-3">
+                                            <div class="row justify-content-center gutter-vr-30px">
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/a-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/b-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/c-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/d-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/e-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/f-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/a-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/b-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="partner-logo">
+                                                        <img src="images/partners/c-light.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="section-head section-head-s2 text-center">
+                                    <h2 class="title" title="Update">NEWS</h2>
+                                </div>
+                                <div class="nk-block">
+                                    <div class="has-carousel carousel-nav-center" data-items="1" data-navs="true">
+                                        <div class="item pb-2">
+                                            <div class="blog blog-s2">
+                                                <div class="blog-content blog-content-inline">
+                                                    <div class="blog-text">
+                                                        <h5 class="blog-title title-sm">Fintech G20 Global Summit 2022</h5>
+                                                        <div class="blog-location">New Youk, United State</div>
+                                                    </div>
+                                                    <div class="blog-action">
+                                                        <a href="#" class="link"><span> Learn More</span> <em class="link-icon link-icon-sm fas fa-angle-right"></em></a>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-image round" data-overlay="theme" data-opacity="85">
+                                                    <img src="images/azalea/news-hr-a.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="blog blog-s2">
+                                                <div class="blog-content blog-content-inline">
+                                                    <div class="blog-text">
+                                                        <h5 class="blog-title title-sm">Blockchain Global Summit 2022</h5>
+                                                        <div class="blog-location">California, United State</div>
+                                                    </div>
+                                                    <div class="blog-action">
+                                                        <a href="#" class="link"><span> Learn More</span> <em class="link-icon link-icon-sm fas fa-angle-right"></em></a>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-image round" data-overlay="theme" data-opacity="85">
+                                                    <img src="images/azalea/news-hr-b.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item pb-2">
+                                            <div class="blog blog-s2">
+                                                <div class="blog-content blog-content-inline">
+                                                    <div class="blog-text">
+                                                        <h5 class="blog-title title-sm">Fintech G20 Global Summit 2022</h5>
+                                                        <div class="blog-location">New Youk, United State</div>
+                                                    </div>
+                                                    <div class="blog-action">
+                                                        <a href="#" class="link"><span> Learn More</span> <em class="link-icon link-icon-sm fas fa-angle-right"></em></a>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-image round" data-overlay="theme" data-opacity="85">
+                                                    <img src="images/azalea/news-hr-a.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="blog blog-s2">
+                                                <div class="blog-content blog-content-inline">
+                                                    <div class="blog-text">
+                                                        <h5 class="blog-title title-sm">Blockchain Global Summit 2022</h5>
+                                                        <div class="blog-location">California, United State</div>
+                                                    </div>
+                                                    <div class="blog-action">
+                                                        <a href="#" class="link"><span> Learn More</span> <em class="link-icon link-icon-sm fas fa-angle-right"></em></a>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-image round" data-overlay="theme" data-opacity="85">
+                                                    <img src="images/azalea/news-hr-b.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- // -->
+            <section class="section" id="faqs">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-6">
+                            <div class="section-head section-head-s2">
+                                <h2 class="title title-xl" title="FAQS">FAQS</h2>
+                                <p>Below we’ve provided a bit of Memehub, Memeh Token, cryptocurrencies, and few others. If you have any other questions, please get in touch.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Block @s -->
+                    <div class="nk-block">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10">
+                                <ul class="nav tab-nav tab-nav-btn tab-nav-btn-bdr tab-nav-center pdb-r">
+                                    <li><a class="active" data-bs-toggle="tab" href="#tab-2-1">About Memeh Token</a></li>
+                                    <li><a data-bs-toggle="tab" href="#tab-2-2">About Memehub</a></li>
+                                    <!-- <li><a data-bs-toggle="tab" href="#tab-2-3">About Cryptocurrency</a></li> -->
+                                    <!-- <li><a data-bs-toggle="tab" href="#tab-2-4">Investors</a></li> -->
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tab-2-1">
+                                        <div class="accordion" id="acc-1">
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-1-1">What is Memeh Token? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-1-1" class="collapse show" data-bs-parent="#acc-1">
+                                                    <div class="accordion-content">
+                                                        <p>Memeh Token (MEMEH) is the native cryptocurrency of Memehub, powering transactions and interactions within the platform. It incentivizes user participation, enables rewarding experiences, and fosters a vibrant meme economy where creators can earn and users can unlock exclusive features.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-1-2">Where can i buy Memeh? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-1-2" class="collapse" data-bs-parent="#acc-1">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with BNB or Busd on our website.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-1-3">How can I participate in Airdrop? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-1-3" class="collapse" data-bs-parent="#acc-1">
+                                                    <div class="accordion-content">
+                                                        <p>Once the Airdrop is launched, You can participate in it from our website.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-1-4">How do I benefit from the ICO Token? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-1-4" class="collapse" data-bs-parent="#acc-1">
+                                                    <div class="accordion-content">
+                                                        <p>Capitalize on Early Investment Advantage: Purchasing tokens during the early stages can be advantageous due to the potential for price appreciation. In the case of our token, the presale price will gradually increase over time. By buying now at the initial price of $0.0001, you can potentially benefit from future price increases. For instance, after stage one, the price will rise to $0.00015, then further increase to $0.0002, and finally reach $0.0005 upon launch.                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-2-2">
+                                        <div class="accordion" id="acc-2">
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-2-1">What is Memehub? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-2-1" class="collapse show" data-bs-parent="#acc-2">
+                                                    <div class="accordion-content">
+                                                        <p>Memehub is a social media platform dedicated to meme enthusiasts and creators. It provides a space to discover, create, and engage with a wide range of memes. It offers features such as meme subscriptions, rewards for creators, and a vibrant community.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-2-2">How can I join Memehub? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-2-2" class="collapse" data-bs-parent="#acc-2">
+                                                    <div class="accordion-content">
+                                                        <p>Joining Memehub is easy! Once our platform is launched, Simply visit our website and sign up for an account. You'll gain access to a world of memes, interactions with creators, and the ability to contribute your own creative content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-2-3">Are there any rewards for meme creators on Memehub? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-2-3" class="collapse" data-bs-parent="#acc-2">
+                                                    <div class="accordion-content">
+                                                        <p> Yes! Memehub rewards meme creators through the Memehub Token (MEMEH). Creators can earn MEMEH based on views, subscribes, and other metrics. These tokens hold real value and can be utilized within the platform.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-2-4">Is Memehub free to use? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-2-4" class="collapse" data-bs-parent="#acc-2">
+                                                    <div class="accordion-content">
+                                                        <p>Yes, Memehub is free to use for all users. However, there may be optional premium features or subscriptions available for those who want to unlock additional perks and benefits.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="tab-pane fade" id="tab-2-3">
+                                        <div class="accordion" id="acc-3">
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-3-1">What is ICO Crypto? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-3-1" class="collapse show" data-bs-parent="#acc-3">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-3-2">What cryptocurrencies can I use to purchase? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-3-2" class="collapse" data-bs-parent="#acc-3">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-3-3">How can I participate in the ICO Token sale? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-3-3" class="collapse" data-bs-parent="#acc-3">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-3-4">How do I benefit from the ICO Token? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-3-4" class="collapse" data-bs-parent="#acc-3">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="tab-pane fade" id="tab-2-4">
+                                        <div class="accordion" id="acc-4">
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-4-1">What is ICO Crypto? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-4-1" class="collapse show" data-bs-parent="#acc-4">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-4-2">What cryptocurrencies can I use to purchase? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-4-2" class="collapse" data-bs-parent="#acc-4">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-4-3">How can I participate in the ICO Token sale? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-4-3" class="collapse" data-bs-parent="#acc-4">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s3">
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-4-4">How do I benefit from the ICO Token? <span class="accordion-icon"></span></h5>
+                                                <div id="acc-4-4" class="collapse" data-bs-parent="#acc-4">
+                                                    <div class="accordion-content">
+                                                        <p>Once ICO period is launched, You can purchased Token with Etherum, Bitcoin or Litecoin. You can also tempor incididunt ut labore et dolore magna aliqua sed do eiusmod eaque ipsa.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section" id="contact">
+                <div class="container">
+                    <!-- Block @s -->
+                    <div class="nk-block nk-block-contact">
+                        <div class="row justify-content-between align-items-center gutter-vr-50px">
+                            <div class="col-lg-6">
+                                <div class="nk-block-text">
+                                    <div class="nk-block-text-head">
+                                        <h2 class="title title-lg ttu">Contact Us</h2>
+                                        <p>We are always open and we welcome and questions you have for our team. If you wish to get in touch, please fill out the form below. Someone from our team will get back to you shortly.</p>
+                                    </div>
+                                    <form class="nk-form-submit" action="{% url 'contact' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="field-item">
+                                                    <label class="field-label ttu">Your Name</label>
+                                                    <div class="field-wrap">
+                                                        <input name="name" placeholder="Introduce yourself" type="text" class="input-bordered required">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6">
+                                                <div class="field-item">
+                                                    <label class="field-label ttu">Your Email</label>
+                                                    <div class="field-wrap">
+                                                        <input name="email" placeholder="Who do we Reply to" type="email" class="input-bordered required email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="field-item">
+                                            <label class="field-label ttu">Your Message</label>
+                                            <div class="field-wrap">
+                                                <textarea name="message" placeholder="Leave your question or comment here" class="input-bordered input-textarea required"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <input type="text" class="d-none" name="form-anti-honeypot" value="">
+                                        <div class="row">
+                                            <div class="col-sm-5 text-end">
+                                                <button type="submit" class="btn btn-round btn-primary">SEND</button>
+                                            </div>
+                                            <div class="col-sm-7 order-sm-first">
+                                                <div class="form-results"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 text-center order-lg-first">
+                                <div class="nk-block-contact nk-block-contact-s1">
+                                    <ul class="contact-list">
+                                        <!-- <li>
+                                            <em class="contact-icon fas fa-phone"></em>
+                                            <div class="contact-text">
+                                                <span>+44 0123 4567</span>
+                                            </div>
+                                        </li> -->
+                                        <li>
+                                            <em class="contact-icon fas fa-envelope"></em>
+                                            <div class="contact-text">
+                                                <span>contact@memehub.me</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <em class="contact-icon fas fa-paper-plane"></em>
+                                            <div class="contact-text">
+                                                <a href="https://web.telegram.org/a/"><span>Join us on Telegram</span></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="nk-circle-animation nk-df-center white small"></div><!-- .circle-animation -->
+                                </div>
+                                <ul class="social-links social-links-s2 justify-content-center">
+                                    <li><a href="#"><em class="fab fa-twitter"></em></a></li>
+                                    <li><a href="#"><em class="fab fa-telegram"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-facebook-f"></em></a></li> -->
+                                    <li><a href="#"><em class="fab fa-youtube"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-bitcoin"></em></a></li> -->
+                                    <li><a href="#"><em class="fab fa-github"></em></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="nk-footer-bar section section-s tc-light">
+            <div class="container container-xxl">
+                <div class="row gutter-vr-10px">
+                    <div class="col-lg-6 order-lg-last text-lg-end">
+                        <ul class="footer-nav">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of sales</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="copyright-text copyright-text-s2">Copyright &copy; 2023 Memehub. </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="nk-ovm nk-ovm-repeat nk-ovm-fixed shape-i">
+            <div class="ovm-line"></div>
+        </div>
+    </div>
+    <!-- preloader -->
+    <div class="preloader preloader-alt no-split"><span class="spinner spinner-alt"><img class="spinner-brand" src="{% static 'images/logo-s2-white.png' %}" alt=""></span></div>
+    <!-- JavaScript -->
+    <script>
+        // Check if Web3 provider is available
+        if (window.ethereum) {
+            // Initialize Web3 object
+            const web3 = new Web3(window.ethereum);
+    
+            // Request user permission to access their accounts
+            document.getElementById('connectBtn').addEventListener('click', async () => {
+                try {
+                    // Request user permission to access their accounts
+                    await window.ethereum.enable();
+    
+                    // Get the selected account
+                    const accounts = await web3.eth.getAccounts();
+                    const selectedAccount = accounts[0];
+    
+                    // Use the selected account for further operations
+                    console.log('Connected with account:', selectedAccount);
+    
+                    // Update the wallet status
+                    document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
+    
+                    // Set the selected account value in the hidden input field
+                    document.getElementById('selectedAccount').value = selectedAccount;
+                } catch (error) {
+                    console.error('Error connecting wallet:', error);
+                }
+            });
+        } else {
+            console.error('Web3 provider not found. Please install Metamask.');
+        }
+    </script>
+    <script src="{% static 'assets/js/jquery.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/scripts.js' %}"></script>
+    <script src="{% static 'assets/js/charts.js' %}"></script>
+    <script src="{% static 'assets/js/charts.js' %}"></script>
+</body>
+
+</html>
