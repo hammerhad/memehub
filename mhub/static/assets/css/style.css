@@ -2452,6 +2452,9 @@ input:-moz-placeholder, textarea:-moz-placeholder { color: rgba(65, 80, 118, 0.6
 
 .input-bordered { border-radius: 6px; border: 1px solid #dbe4f7; width: 100%; padding: 10px 15px; line-height: 21px; font-size: .9em; color: #415076; transition: all .4s; background-color: transparent; }
 
+.input-bordered-no { border-radius: 6px; border: 1px solid #dbe4f7;  width: 20%; padding: 10px 15px; line-height: 21px; font-size: .9em; color: #415076; transition: all .4s; background-color: transparent; }
+
+
 .input-bordered-lg { padding: 13px 20px; }
 
 .input-bordered-lg-s1 { padding: 17px 20px; }
@@ -2469,6 +2472,10 @@ input:-moz-placeholder, textarea:-moz-placeholder { color: rgba(65, 80, 118, 0.6
 .input-bordered:focus { box-shadow: none; outline: none; border-color: #b7bee3; }
 
 .input-bordered:disabled { background: rgba(219, 228, 247, 0.2); }
+
+.input-bordered-no:focus { box-shadow: none; outline: none; border-color: #b7bee3; }
+
+.input-bordered-no:disabled { background: rgba(219, 228, 247, 0.2); }
 
 .input-switch { position: absolute; height: 1px; width: 1px; opacity: 0; }
 

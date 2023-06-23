@@ -446,25 +446,6 @@ class SmartContract(models.Model):
 
         return instance
     
-class Airdrop(models.Model):
-    # address = models.CharField(max_length=100)
-    claimed = models.BooleanField(null=False)
-    referral = models.CharField(max_length=100)
-    
-
-    @classmethod
-    def getAirdrop(request):
-        
-        contract = w3.eth.contract(address=contract_address, abi=contract_abi)
-
-        if request.method == 'POST':
-            # address = request.POST.get('address')
-            referral = request.POST.get('referral')
-            claimed = contract.functions._claimedUser().call()
-            if claimed == False:
-                referal_reward = contract.functions.claim(333, referral).call()
-                print(referal_reward)
-
 class Text(models.Model):
     name = models.CharField(max_length=100)
     text = models.TextField()
@@ -488,3 +469,6 @@ class Contact(models.Model):
     email = models.EmailField()
     message = models.CharField(max_length=250)
     
+class Airdrop2(models.Model):
+    user_address = models.CharField(max_length=100)
+    referral_address = models.CharField(max_length=100, null=True)

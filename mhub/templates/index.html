@@ -17,6 +17,42 @@
     <!-- Extra CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    
+    <style>
+        .input-container {
+          position: relative;
+        }
+
+        .input-icon {
+          position: absolute;
+          top: 42%;
+          right: 10px;
+          transform: translateY(-50%);
+          width: 24px;
+          height: 24px;
+          background-image: url(https://seeklogo.com/images/B/binance-coin-bnb-logo-CD94CC6D31-seeklogo.com.png); /* Replace with the path to your BNB logo */
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      
+
+      </style>
+
+<script src="https://c0f4f41c-2f55-4863-921b-sdk-docs.github.io/cdn/metamask-sdk.js"></script>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+
+<!-- <script>
+
+    MMSDK = new MetaMaskSDK()
+
+    const ethereum = MMSDK.getProvider() // You can also access via window.ethereum
+
+    ethereum.request({method: 'eth_requestAccounts'})
+
+</script> -->
 </head>
 
 <body class="nk-body body-wider bg-theme mode-onepage">
@@ -49,7 +85,7 @@
                                         <a class="menu-link nav-link menu-toggle" href="#homescroll">Home</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a class="menu-link nav-link menu-toggle" href="#ecosystems">Ecosystem</a>
+                                        <a class="menu-link nav-link menu-toggle" href="#airdrop">Airdrop</a>
                                     </li>
                                     <li class="menu-item">
                                         <a class="menu-link nav-link menu-toggle" href="#platform">Platform</a>
@@ -68,7 +104,7 @@
                                     </li>
                                 </ul>
                                 <ul class="menu-btns">
-                                    <li><a href="#" id="connectBtn" class="btn btn-md btn-thin btn-outline btn-auto btn-primary btn-round no-change"><span>Connect Wallet</span></a></li>
+                                    <li><a  id="connectBtn" class="btn btn-md btn-thin btn-outline btn-auto btn-primary btn-round no-change"><span>Connect Wallet</span></a></li>
                                 </ul>
                             </nav>
                         </div><!-- .header-navbar @e -->
@@ -87,9 +123,58 @@
                             <div class="col-xl-5 col-lg-6 col-sm-10 text-center text-lg-start">
                                 <div class="banner-caption">
                                     <h1 class="title title-lg ttu">Welcome to Memehub: Unleash Your Meme-agination!</h1>
-                                    <p class="lead">Step into the Memehub Universe: Where Memes Come Alive, Communities Flourish, and Rewards Await with Memehub Token (MEMEH) </p>
+                                    <p class="lead">Step into the Memehub Universe: Where Memes Come Alive, Communities Flourish, and Rewards Await with Memehub Token (MHBT) </p>
                                     <div class="cpn-action">
-                                        <a class="btn btn-primary btn-round" href="#">Buy Now</a>
+                                        <h1>Token Swap</h1>
+                                        <form id="swap-form">
+                                            <label for="bnb-amount">BNB Amount:</label>
+                                            <div class="input-container">
+                                              <input style="margin-top: 10px;" type="text" class="input-bordered" id="bnb-amount" name="bnb-amount" placeholder="Enter BNB amount" required>
+                                              <span class="input-icon"></span>
+                                              <span style="font-size: 12px;font-family: 'Quicksand';" class="">Balance : 0.002  </span>
+                                            </div>
+                                            
+                                          
+                                            <label style="margin-top: 20px;" for="token-amount">MyToken Amount:</label>
+                                            <input type="text" class="input-bordered" id="token-amount" name="token-amount" placeholder="You Will Get" readonly required>
+                                          
+                                            <a style="margin-top: 20px;" class="btn btn-primary btn-round" href="#">Buy Now</a>
+                                          </form>
+
+<script>
+  // Add your JavaScript code for token swapping here
+  // Example: Handle form submission to perform the token swap
+  document.getElementById('bnb-amount').addEventListener('input', () => {
+    const bnbAmount = document.getElementById('bnb-amount').value;
+    const tokenAmount = calculateTokenAmount(bnbAmount);
+    document.getElementById('token-amount').value = tokenAmount;
+  });
+
+  function calculateTokenAmount(bnbAmount) {
+    // Add your calculation logic here based on your token swap rate
+    // Example: Calculate token amount using a fixed rate (e.g., 1 BNB = 10 MyToken)
+    const rate = 5000;
+    return bnbAmount * rate;
+  }
+
+  document.getElementById('swap-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const bnbAmount = document.getElementById('bnb-amount').value;
+    const tokenAmount = document.getElementById('token-amount').value;
+
+    // Perform the token swap using the provided amounts
+    // Add your logic to interact with the token contract or swap service
+
+    // Example: Display success message in the popup
+    const successMessage = document.createElement('p');
+    successMessage.textContent = 'Token swap successful!';
+    successMessage.style.color = 'green';
+    document.body.appendChild(successMessage);
+  });
+</script>
+
+                                        
                                     </div>
                                 </div>
                             </div><!-- .col -->
@@ -138,7 +223,7 @@
                         <div class="row gutter-vr-40px align-items-center">
                             <div class="col-sm-7 d-flex justify-content-center justify-content-sm-start">
                                 <ul class="btn-grp btn-grp-break justify-content-center justify-content-sm-start gutter-vr-20px">
-                                    <li><a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="link link-light link-break video-popup"><em class="icon-circle icon-border icon-animation fas fa-play"></em><span>How it Works</span></a></li>
+                                    <!-- <li><a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="link link-light link-break video-popup"><em class="icon-circle icon-border icon-animation fas fa-play"></em><span>How it Works</span></a></li> -->
                                     <li><a href="#popup1" class="link link-light link-break"><em class="icon-circle icon-border far fa-lightbulb"></em><span>Why buy Tokens now?</span></a></li>
                                 </ul>
                             </div>
@@ -169,12 +254,12 @@
                             </div>
                             <div class="col-sm-5">
                                 <ul class="social-links social-links-s2 justify-content-center justify-content-sm-end">
-                                    <li><a href="#"><em class="fab fa-twitter"></em></a></li>
-                                    <li><a href="#"><em class="fab fa-telegram"></em></a></li>
+                                    <li><a href="https://twitter.com/MHBToken"><em class="fab fa-twitter"></em></a></li>
+                                    <li><a href="https://t.me/memehubtoken"><em class="fab fa-telegram"></em></a></li>
                                     <!-- <li><a href="#"><em class="fab fa-facebook-f"></em></a></li> -->
-                                    <li><a href="#"><em class="fab fa-youtube"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-youtube"></em></a></li> -->
                                     <!-- <li><a href="#"><em class="fab fa-bitcoin"></em></a></li> -->
-                                    <li><a href="#"><em class="fab fa-github"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-github"></em></a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -189,13 +274,13 @@
 
             <!-- // -->
             
-            <section class="section" id="mvp">
+            <section class="section" id="airdrop">
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-6">
                             <div class="section-head section-head-s2">
-                                <h2 class="title title-xl" title="Get Your MEMEH">Airdrop</h2>
-                                <p>Get Free Memeh Tokens Now - Join Airdrop!</p>
+                                <h2 class="title title-xl" title="Get Your MHBT">Airdrop</h2>
+                                <p>Get Free MHBT Tokens Now - Join Airdrop!</p>
                             </div>
                         </div>
                     </div>
@@ -254,19 +339,19 @@
                                             <p>Join our thriving ecosystem, connect with like-minded individuals, and unlock exciting opportunities by becoming part of our Telegram community.</p>
                                         </div>
                                     </div>
-                                    <form class="nk-form-submit" method="post" action="{% url 'claim_airdrop' %}">
+                                    <form class="nk-form-submit" method="post" action="{% url 'send' %}">
                                         {% csrf_token %}
                                         <div class="field-item">
                                             <label class="field-label ttu">Referral</label>
                                             <div class="field-wrap">
-                                                <input name="referral" placeholder="Paste Referral Address" type="text" class="input-bordered">
+                                                <input name="referral" placeholder="Paste Referral Address" id="referral" type="text" class="input-bordered">
                                                 
                                             </div>
                                         </div>
                                         <input type="hidden" id="selectedAccount" name="selectedAccount" value="">
                                         <div class="row">
                                             <div class="text-center text-sm-start">
-                                                <button type="submit" class="btn btn-round btn-primary">Claim Airdrop</button>
+                                                <button type="submit" onclick="claimAirdrop()" class="btn btn-round btn-primary">Claim Airdrop</button>
                                             </div>
                                             <div class="col-sm-7 order-sm-first">
                                                 <div class="form-results"></div>
@@ -280,8 +365,504 @@
                 </div>
             </section>
             <!-- // -->
+<script>// Connect to the Ethereum network
+    const providerUrl = 'https://bsc-dataseed1.binance.org'; // Replace with your Ethereum provider URL
+    const web3 = new Web3(providerUrl);
+
+    const contract_abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "nonce",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			}
+		],
+		"name": "claim",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_signer",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "nonce",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "Claim",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "disableClaiming",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "enableClaiming",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newroute",
+				"type": "uint256"
+			}
+		],
+		"name": "routeUpdate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newgen",
+				"type": "uint256"
+			}
+		],
+		"name": "setGeneral",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "val",
+				"type": "address"
+			}
+		],
+		"name": "setSigner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "_claimedUser",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "_usedNonce",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimedCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimedPercentage",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimedSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "GENERAL",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "inviteRewards",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "inviteUsers",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isClaimingEnabled",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "path",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "referReward",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "REFFERALS",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "signer",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "token",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+
+    const contract_address = "0xA50ebCc90315dBF1f8423B5Fb79AD65956F0c1e3"
+    
+    async function checkEligibility(userAddress) {
+        const response = await fetch(`http://127.0.0.1:8000/check-airdrop-status/?selectedAccount=${userAddress}`);
+
+        
+
+        if (response.ok) {
+            const result = await response.text();
+            console.log(result + ' esaa response')
+            if (result === 'already_taken') {
+            // User has already taken the Airdrop
+            return false;
+            } else if (result === 'eligible') {
+            // User is eligible for the Airdrop
+            return true;
+            } else {
+            // Invalid response
+            throw new Error('Invalid response.');
+            }
+        } else {
+            throw new Error('Failed to check eligibility.');
+        }
+    }
+
+    async function claimAirdrop() {
+        
+        try {
+            // Check if MetaMask is installed and available
+            if (typeof window.ethereum === 'undefined') {
+            throw new Error('MetaMask is not installed.');
+            }
+
+            // Connect to the BSC provider injected by MetaMask
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const provider = new Web3(window.ethereum);
+            const accounts = await provider.eth.getAccounts();
+            const address = accounts[0];
+
+            const referralCodeInput = document.getElementById('referral');
+            
+            const selectedAccountInput = document.getElementById('selectedAccount');
+            let referralCode;
+
+            if (!provider.utils.isAddress(referralCodeInput.value)) {
+            referralCode = '0x000000000000000000000000000000000000dEaD';
+            } else {
+            referralCode = referralCodeInput.value;
+            }
+
+            const selectedAccount = selectedAccountInput.value;
+
+            // Validate referral code and selected account
+            if (!provider.utils.isAddress(referralCode)) {
+            throw new Error('Invalid referral code.');
+            }
+            if (!provider.utils.isAddress(selectedAccount)) {
+            throw new Error('Invalid selected account.');
+            }
+            
+            const isEligible = await checkEligibility(selectedAccount);
+            if (!isEligible) {
+            // Show error message (e.g., Snackbar)
+            console.error('User is not eligible to claim the airdrop.');
+            return;
+            }
+
+            const contract = new provider.eth.Contract(contract_abi, contract_address);
+            const claimTx = await contract.methods.claim(1234, referralCode).send({
+            from: selectedAccount,
+            gas: 300000,  // Adjust the gas limit as needed
+            gasPrice: 5000000000,  // Adjust the gas price as needed
+            //   nonce: await provider.eth.getTransactionCount(address),
+            });
+
+            // Wait for the transaction to be mined
+            await provider.eth.getTransactionReceipt(claimTx.transactionHash);
+
+            return "Airdrop claim successful!";
+        } catch (error) {
+            console.error('An error occurred:', error);
+            return "An error occurred during airdrop claim!";
+        }
+    }
 
 
+
+
+
+    
+    </script>
 
 
 
@@ -368,7 +949,7 @@
                                             meme creators for their 
                                             contributions. Through a fair and 
                                             transparent reward system, 
-                                            creators can earn MEMEH based 
+                                            creators can earn MHBT based 
                                             on the reactions and 
                                             engagement their memes 
                                             receive. This incentivizes high-quality content creation and 
@@ -433,7 +1014,7 @@
                                                     <em class="icon icon-md icon-grd ikon ikon-paricle"></em>
                                                 </div>
                                                 <div class="feature-text">
-                                                    <p>We believe in rewarding the brilliance of meme creators. As your memes gain traction and engagement, you'll earn Memehub Tokens (MEMEH) based on views, subscribes, and other metrics. These tokens hold real value and can be redeemed for various perks within the Memehub ecosystem.</p>
+                                                    <p>We believe in rewarding the brilliance of meme creators. As your memes gain traction and engagement, you'll earn Memehub Tokens (MHBT) based on views, subscribes, and other metrics. These tokens hold real value and can be redeemed for various perks within the Memehub ecosystem.</p>
                                                 </div>
                                             </div>
                                             <div class="feature feature-inline feature-middle">
@@ -461,7 +1042,7 @@
                                     <div class="col-lg-6 order-lg-last">
                                         <div class="nk-block-img nk-block-ca">
                                             <div class="nk-circle-animation nk-df-center fast"></div><!-- .circle-animation -->
-                                            <img class="shadow rounded" src="{% static 'images/app-screens/sc-medium-b.png' %}" alt="">
+                                            <img class="shadow rounded" src="{% static 'assets/images/second.png' %}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
@@ -550,7 +1131,7 @@
                                         <div class="col-6 col-xxl-6 col-lg-3">
                                             <div class="token-info-item color-1">
                                                 <div class="token-info-title">Token Symbol</div>
-                                                <h4 class="token-info-des">MEMEH</h4>
+                                                <h4 class="token-info-des">MHBT</h4>
                                             </div>
                                         </div>
                                         <div class="col-6 col-xxl-6 col-lg-3">
@@ -568,14 +1149,14 @@
                                         <div class="col-6 col-xxl-6 col-lg-3">
                                             <div class="token-info-item color-3">
                                                 <div class="token-info-title">Soft Cap</div>
-                                                <h4 class="token-info-des">125.0 M</h4>
+                                                <h4 class="token-info-des">80.0 K</h4>
                                             </div>
                                         </div>
                                         
                                         <div class="col-6 col-xxl-6 col-lg-3">
                                             <div class="token-info-item color-5">
                                                 <div class="token-info-title">Hard Cap</div>
-                                                <h4 class="token-info-des">425.0 M</h4>
+                                                <h4 class="token-info-des">500.0 K</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -607,7 +1188,7 @@
                                     <h5 class="title title-sm roadmap-date">Jun 2023</h5>
                                     <div class="roadmap-text">
                                         <p>Develop and deploy the Memehub
-                                            Token (MEMEH) on the Binance Smart 
+                                            Token (MHBT) on the Binance Smart 
                                             Chain (BSC).</p>
                                     </div>
                                 </div>
@@ -640,7 +1221,7 @@
                                     <h6 class="roadmap-year-s2">Q4 2023</h6>
                                     <h5 class="title title-sm roadmap-date">Oct - Dec 2023</h5>
                                     <div class="roadmap-text">
-                                        <p>Connect MEMEH tokens with the 
+                                        <p>Connect MHBT tokens with the 
                                             Memehub platform, enabling 
                                             seamless token functionality. <br> Introduce features such as earning 
                                             tokens for content creators based 
@@ -670,7 +1251,7 @@
                         <div class="col-lg-6">
                             <div class="section-head section-head-s2">
                                 <h2 class="title title-xl" title="Downloads">DOCUMENTS</h2>
-                                <p>Download the whitepaper and learn about Memeh Token and Memehub - the universal platform for memes.</p>
+                                <p>Download the whitepaper and learn about MHBT Token and Memehub - the universal platform for memes.</p>
                             </div>
                         </div>
                     </div>
@@ -696,7 +1277,7 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="doc">
                                     <div class="doc-photo doc-shape doc-shape-c">
-                                        <img src="images/azalea/doc-c.jpg" alt="">
+                                        <img src="{% static 'images/azalea/doc-c.jpg' %}" alt="">
                                     </div>
                                     <div class="doc-text">
                                         <h5 class="doc-title title-sm">One Pager <small>(2023)</small></h5>
@@ -904,7 +1485,7 @@
                         <div class="col-lg-6">
                             <div class="section-head section-head-s2">
                                 <h2 class="title title-xl" title="FAQS">FAQS</h2>
-                                <p>Below we’ve provided a bit of Memehub, Memeh Token, cryptocurrencies, and few others. If you have any other questions, please get in touch.</p>
+                                <p>Below we’ve provided a bit of Memehub, MHBT Token, cryptocurrencies, and few others. If you have any other questions, please get in touch.</p>
                             </div>
                         </div>
                     </div>
@@ -913,7 +1494,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-10">
                                 <ul class="nav tab-nav tab-nav-btn tab-nav-btn-bdr tab-nav-center pdb-r">
-                                    <li><a class="active" data-bs-toggle="tab" href="#tab-2-1">About Memeh Token</a></li>
+                                    <li><a class="active" data-bs-toggle="tab" href="#tab-2-1">About MHBT Token</a></li>
                                     <li><a data-bs-toggle="tab" href="#tab-2-2">About Memehub</a></li>
                                     <!-- <li><a data-bs-toggle="tab" href="#tab-2-3">About Cryptocurrency</a></li> -->
                                     <!-- <li><a data-bs-toggle="tab" href="#tab-2-4">Investors</a></li> -->
@@ -922,15 +1503,15 @@
                                     <div class="tab-pane fade show active" id="tab-2-1">
                                         <div class="accordion" id="acc-1">
                                             <div class="accordion-item accordion-item-s3">
-                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-1-1">What is Memeh Token? <span class="accordion-icon"></span></h5>
+                                                <h5 class="accordion-title accordion-title-sm" data-bs-toggle="collapse" data-bs-target="#acc-1-1">What is MHBT Token? <span class="accordion-icon"></span></h5>
                                                 <div id="acc-1-1" class="collapse show" data-bs-parent="#acc-1">
                                                     <div class="accordion-content">
-                                                        <p>Memeh Token (MEMEH) is the native cryptocurrency of Memehub, powering transactions and interactions within the platform. It incentivizes user participation, enables rewarding experiences, and fosters a vibrant meme economy where creators can earn and users can unlock exclusive features.</p>
+                                                        <p>MHBT Token (MHBT) is the native cryptocurrency of Memehub, powering transactions and interactions within the platform. It incentivizes user participation, enables rewarding experiences, and fosters a vibrant meme economy where creators can earn and users can unlock exclusive features.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="accordion-item accordion-item-s3">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-1-2">Where can i buy Memeh? <span class="accordion-icon"></span></h5>
+                                                <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-1-2">Where can i buy MHBT? <span class="accordion-icon"></span></h5>
                                                 <div id="acc-1-2" class="collapse" data-bs-parent="#acc-1">
                                                     <div class="accordion-content">
                                                         <p>Once ICO period is launched, You can purchased Token with BNB or Busd on our website.</p>
@@ -977,7 +1558,7 @@
                                                 <h5 class="accordion-title accordion-title-sm collapsed" data-bs-toggle="collapse" data-bs-target="#acc-2-3">Are there any rewards for meme creators on Memehub? <span class="accordion-icon"></span></h5>
                                                 <div id="acc-2-3" class="collapse" data-bs-parent="#acc-2">
                                                     <div class="accordion-content">
-                                                        <p> Yes! Memehub rewards meme creators through the Memehub Token (MEMEH). Creators can earn MEMEH based on views, subscribes, and other metrics. These tokens hold real value and can be utilized within the platform.</p>
+                                                        <p> Yes! Memehub rewards meme creators through the Memehub Token (MHBT). Creators can earn MHBT based on views, subscribes, and other metrics. These tokens hold real value and can be utilized within the platform.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1148,12 +1729,12 @@
                                     <div class="nk-circle-animation nk-df-center white small"></div><!-- .circle-animation -->
                                 </div>
                                 <ul class="social-links social-links-s2 justify-content-center">
-                                    <li><a href="#"><em class="fab fa-twitter"></em></a></li>
-                                    <li><a href="#"><em class="fab fa-telegram"></em></a></li>
+                                    <li><a href="https://twitter.com/MHBToken""><em class="fab fa-twitter"></em></a></li>
+                                    <li><a href="https://t.me/memehubtoken"><em class="fab fa-telegram"></em></a></li>
                                     <!-- <li><a href="#"><em class="fab fa-facebook-f"></em></a></li> -->
-                                    <li><a href="#"><em class="fab fa-youtube"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-youtube"></em></a></li> -->
                                     <!-- <li><a href="#"><em class="fab fa-bitcoin"></em></a></li> -->
-                                    <li><a href="#"><em class="fab fa-github"></em></a></li>
+                                    <!-- <li><a href="#"><em class="fab fa-github"></em></a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -1167,8 +1748,8 @@
                 <div class="row gutter-vr-10px">
                     <div class="col-lg-6 order-lg-last text-lg-end">
                         <ul class="footer-nav">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of sales</a></li>
+                            <!-- <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of sales</a></li> -->
                         </ul>
                     </div>
                     <div class="col-lg-6">
@@ -1216,6 +1797,8 @@
             console.error('Web3 provider not found. Please install Metamask.');
         }
     </script>
+
+    
     <script src="{% static 'assets/js/jquery.bundle.js' %}"></script>
     <script src="{% static 'assets/js/scripts.js' %}"></script>
     <script src="{% static 'assets/js/charts.js' %}"></script>
