@@ -17,11 +17,13 @@ from django import views
 from django.contrib import admin
 from django.urls import path
 
-from mhub.views import home, contact_view, claim_airdrop
+from mhub.views import  home, contact_view, send, checkAirdropStatus
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('contact/', contact_view, name='contact'),
-    path('send_airdrop/', claim_airdrop, name='claim_airdrop'),
+    path('send/', send, name='send'),
+    path('check-airdrop-status/', checkAirdropStatus, name='check_airdrop_status'),
+
 ]

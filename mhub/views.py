@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 
 # Create your views here.
 from django.shortcuts import render
-from django.http import HttpResponse
-from web3 import Web3
+from web3 import  Web3
 from .forms import ContactForm
-from .models import Airdrop, Contact, Roadmap, SmartContract
+from .models import Contact, Roadmap, SmartContract, Airdrop2
 from web3.middleware import geth_poa_middleware
+import time
 
 
 w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org'))
@@ -417,7 +418,7 @@ contract_abi = [
 ]
 
 # Contract address
-contract_address = '0x5481d02783Ac387d8E5af2064861eD8dE573c6Bc'
+contract_address = '0xA50ebCc90315dBF1f8423B5Fb79AD65956F0c1e3'
 
 privateKey = '2e4fe09daab85f41489dad796408e7292045b3ce97071fdf46dd3a9664d76901'
 
@@ -437,51 +438,35 @@ def home(request):
     # 'claimed_supply': claimed_supply
 })
 
-
-def claim_airdrop(request):
-    try:
-        web3 = Web3()
-        # Get the user's address and referral code from the request
-        referral_code = request.POST.get('referral')
-        if referral_code:
-            referralCode = web3.to_checksum_address(referral_code)
-        else:
-            referralCode = web3.to_checksum_address('0x000000000000000000000000000000000000dEaD')
+def send(request):
+    if request.method == 'POST':
         user_address = request.POST.get('selectedAccount')
-        userAddress = web3.to_checksum_address(user_address)
+        referral_address = request.POST.get('referral')
 
-        print(referral_code)
-        print(user_address)
+        # Check if user_address already exists in the database
+        if Airdrop2.objects.filter(user_address=user_address).exists():
+            return HttpResponse('User has already taken the Airdrop')
         
-        # Convert the referral code to bytes if necessary (check the contract's parameter type)
-        # referral_bytes = referral_code.encode()  # Example: converting to UTF-8 bytes
+        # Save the user_address and referral_address in the database
+        airdrop = Airdrop2(user_address=user_address, referral_address=referral_address)
+        time.sleep(2)
+        airdrop.save()
 
-        contract = w3.eth.contract(address=contract_address, abi=contract_abi)
-        # Perform the claim function call on the Airdrop contract
-        claim_txn = contract.functions.claim(1234, referralCode).build_transaction({
-            'from': userAddress,
-            'gas': 200000,  # Adjust the gas limit as needed
-            'nonce': 1234,
-            'gasPrice': w3.to_wei(5, 'gwei')  # Adjust the gas price as needed
-        })
+        return ('success')  # Redirect to a success page or another URL
+    
+    return render(request, 'send.html')
 
-        # Send the transaction
-        tx_hash = w3.eth.send_transaction(claim_txn)
+def checkAirdropStatus(request):
+    if request.method == 'GET':
+        selected_account = request.GET.get('selectedAccount')
 
-        # signed_txn = web3.eth.account.sign_transaction(claim_txn, privateKey)
+        # Check if user_address already exists in the database
+        if Airdrop2.objects.filter(user_address=selected_account).exists():
+            return HttpResponse('already_taken')
+        
+        return HttpResponse('eligible')
 
-        # # Send the signed transaction
-        # tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
-
-        # Wait for the transaction to be mined and retrieve the transaction receipt
-        tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-        print(tx_receipt)
-        return HttpResponse("Airdrop claim successful!")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return HttpResponse("An error occurred during airdrop claim!")
-
-
+    return HttpResponse('Invalid request')
 
 def contact_view(request):
     if request.method == 'POST':
