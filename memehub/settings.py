@@ -134,7 +134,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mhub/static/'),
+    os.path.join(BASE_DIR, 'mhub/mhub/static/'),
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
