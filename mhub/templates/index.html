@@ -1767,35 +1767,37 @@
     <!-- JavaScript -->
     <script>
         // Check if Web3 provider is available
-        if (window.ethereum) {
-            // Initialize Web3 object
-            const web3 = new Web3(window.ethereum);
-    
-            // Request user permission to access their accounts
-            document.getElementById('connectBtn').addEventListener('click', async () => {
-                try {
-                    // Request user permission to access their accounts
-                    await window.ethereum.enable();
-    
-                    // Get the selected account
-                    const accounts = await web3.eth.getAccounts();
-                    const selectedAccount = accounts[0];
-    
-                    // Use the selected account for further operations
-                    console.log('Connected with account:', selectedAccount);
-    
-                    // Update the wallet status
-                    document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
-    
-                    // Set the selected account value in the hidden input field
-                    document.getElementById('selectedAccount').value = selectedAccount;
-                } catch (error) {
-                    console.error('Error connecting wallet:', error);
-                }
-            });
-        } else {
-            console.error('Web3 provider not found. Please install Metamask.');
-        }
+        if (window.ethereum || window.web3) {
+  // Initialize Web3 object
+  const provider = window.ethereum || window.web3.currentProvider;
+  const web3 = new Web3(provider);
+
+  // Request user permission to access their accounts
+  document.getElementById('connectBtn').addEventListener('click', async () => {
+    try {
+      // Request user permission to access their accounts
+      await provider.enable();
+
+      // Get the selected account
+      const accounts = await web3.eth.getAccounts();
+      const selectedAccount = accounts[0];
+
+      // Use the selected account for further operations
+      console.log('Connected with account:', selectedAccount);
+
+      // Update the wallet status
+      document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
+
+      // Set the selected account value in the hidden input field
+      document.getElementById('selectedAccount').value = selectedAccount;
+    } catch (error) {
+      console.error('Error connecting wallet:', error);
+    }
+  });
+} else {
+  console.error('Web3 provider not found. Please install a compatible wallet application.');
+}
+
     </script>
 
     
