@@ -44,15 +44,9 @@
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
         type="application/javascript"></script>
 
-<!-- <script>
-
-    MMSDK = new MetaMaskSDK()
-
-    const ethereum = MMSDK.getProvider() // You can also access via window.ethereum
-
-    ethereum.request({method: 'eth_requestAccounts'})
-
-</script> -->
+        <script type="module">
+            import { WalletConnectModalSign } from 'https://unpkg.com/@walletconnect/modal-sign-html'
+          </script>
 </head>
 
 <body class="nk-body body-wider bg-theme mode-onepage">
@@ -106,6 +100,24 @@
                                 <ul class="menu-btns">
                                     <li><a  id="connectBtn" class="btn btn-md btn-thin btn-outline btn-auto btn-primary btn-round no-change"><span>Connect Wallet</span></a></li>
                                 </ul>
+                                <script>
+
+                                    async function onConnect() {
+                                      const session = await modal.connect({
+                                        requiredNamespaces: {
+                                          eip155: {
+                                            methods: ['eth_sendTransaction', 'personal_sign'],
+                                            chains: ['eip155:1'],
+                                            events: ['chainChanged', 'accountsChanged']
+                                          }
+                                        }
+                                      })
+                                      console.info(session)
+                                    }
+                                    
+                                    document.getElementById('connectBtn').addEventListener('click', onConnect)
+                                    
+                                    </script>
                             </nav>
                         </div><!-- .header-navbar @e -->
                     </div>
@@ -173,6 +185,24 @@
     document.body.appendChild(successMessage);
   });
 </script>
+
+<script>
+import { WalletConnectModalSign } from '@walletconnect/modal-sign-html'
+
+const projectId = d83546601f1a023517bd44808c592284;
+
+const modal = new WalletConnectModalSign({
+  projectId,
+  metadata: {
+    name: 'Memehub',
+    description: 'UNLEASH YOUR MEME-AGINATION!',
+    url: 'memehub.me',
+    icons: ['https://memehub.me/static/images/logo-s2-white.png']
+  }
+})
+
+</script>
+
 
                                         
                                     </div>
@@ -1765,7 +1795,7 @@
     <!-- preloader -->
     <div class="preloader preloader-alt no-split"><span class="spinner spinner-alt"><img class="spinner-brand" src="{% static 'images/logo-s2-white.png' %}" alt=""></span></div>
     <!-- JavaScript -->
-    <script>
+    <!-- <script>
         const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 if (window.ethereum) {
@@ -1811,7 +1841,7 @@ if (window.ethereum) {
 
 
 
-    </script>
+    </script> -->
 
     
     <script src="{% static 'assets/js/jquery.bundle.js' %}"></script>
