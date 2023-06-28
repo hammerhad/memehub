@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'memehub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'memehub',
+        'NAME': 'mhub',
         'USER': 'admin',
         'PASSWORD': 'Basharuli12345',
         'HOST': 'localhost',
