@@ -14,7 +14,7 @@ w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org'))
 w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # ABI (Application Binary Interface) of the smart contract
-contract_abi = config('AIRDROP_ABI')
+# contract_abi = config('AIRDROP_ABI')
 
 # Contract address
 contract_address = config('AIRDROP_ADDRESS')
