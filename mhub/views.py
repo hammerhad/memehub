@@ -14,12 +14,10 @@ w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org'))
 w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # ABI (Application Binary Interface) of the smart contract
-# contract_abi = config('AIRDROP_ABI')
+contract_abi = config('AIRDROP_ABI')
 
 # Contract address
 contract_address = config('AIRDROP_ADDRESS')
-
-privateKey = '2e4fe09daab85f41489dad796408e7292045b3ce97071fdf46dd3a9664d76901'
 
 def home(request):
     req = SmartContract().retrieve_data_from_contract() #getAirdrop
