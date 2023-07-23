@@ -359,8 +359,8 @@ contract_address = "0x4488032cbeDE1d0481aCB000dD98c0d804c80655"
 
 class SmartContract(models.Model):
     totalSupply = models.CharField(max_length=100)
-    claimedSupply = models.CharField(max_length=100)
-    isClaimingEnabled = models.BooleanField(null=True)
+    owner = models.CharField(max_length=100)
+    isClaimingPaused = models.BooleanField(null=True)
 
     @classmethod
     def retrieve_data_from_contract(cls):
@@ -376,16 +376,16 @@ class SmartContract(models.Model):
         instance, created = cls.objects.get_or_create(
             defaults={
                 'totalSupply': referal_reward,
-                'claimedSupply': claimed_supply,
-                'isClaimingEnabled': is_claiming_enabled
+                'owner': claimed_supply,
+                'isClaimingPaused': is_claiming_enabled
             }
         )
 
         if not created:
             # If the instance already exists, update its fields
             instance.totalSupply = referal_reward
-            instance.claimedSupply = claimed_supply
-            instance.isClaimingEnabled = is_claiming_enabled
+            instance.owner = claimed_supply
+            instance.isClaimingPaused = is_claiming_enabled
             instance.save()
 
         return instance
