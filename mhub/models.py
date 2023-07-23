@@ -12,22 +12,22 @@ contract_abi = [
 		"type": "constructor"
 	},
 	{
-		"anonymous": false,
+		"anonymous": False,
 		"inputs": [
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "owner",
 				"type": "address"
 			},
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "spender",
 				"type": "address"
 			},
 			{
-				"indexed": false,
+				"indexed": False,
 				"internalType": "uint256",
 				"name": "value",
 				"type": "uint256"
@@ -158,16 +158,16 @@ contract_abi = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
+		"anonymous": False,
 		"inputs": [
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "previousOwner",
 				"type": "address"
 			},
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "newOwner",
 				"type": "address"
@@ -177,10 +177,10 @@ contract_abi = [
 		"type": "event"
 	},
 	{
-		"anonymous": false,
+		"anonymous": False,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": False,
 				"internalType": "address",
 				"name": "account",
 				"type": "address"
@@ -221,22 +221,22 @@ contract_abi = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
+		"anonymous": False,
 		"inputs": [
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "from",
 				"type": "address"
 			},
 			{
-				"indexed": true,
+				"indexed": True,
 				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
-				"indexed": false,
+				"indexed": False,
 				"internalType": "uint256",
 				"name": "value",
 				"type": "uint256"
@@ -288,10 +288,10 @@ contract_abi = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
+		"anonymous": False,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": False,
 				"internalType": "address",
 				"name": "account",
 				"type": "address"
