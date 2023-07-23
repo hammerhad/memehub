@@ -358,7 +358,7 @@ contract_address = "0x4488032cbeDE1d0481aCB000dD98c0d804c80655"
 
 
 class SmartContract(models.Model):
-    referalReward = models.CharField(max_length=100)
+    totalSupply = models.CharField(max_length=100)
     claimedSupply = models.CharField(max_length=100)
     isClaimingEnabled = models.BooleanField(null=True)
 
@@ -368,14 +368,14 @@ class SmartContract(models.Model):
         contract = w3.eth.contract(address=contract_address, abi=contract_abi)
 
         # Retrieve data from the smart contract using contract function calls
-        referal_reward = contract.functions.referReward().call()
-        claimed_supply = contract.functions.claimedSupply().call()
-        is_claiming_enabled = contract.functions.isClaimingEnabled().call()
+        referal_reward = contract.functions.totalSupply().call()
+        claimed_supply = contract.functions.owner().call()
+        is_claiming_enabled = contract.functions.paused().call()
 
         # Get the existing instance if it exists, otherwise create a new instance
         instance, created = cls.objects.get_or_create(
             defaults={
-                'referalReward': referal_reward,
+                'totalSupply': referal_reward,
                 'claimedSupply': claimed_supply,
                 'isClaimingEnabled': is_claiming_enabled
             }
@@ -383,7 +383,7 @@ class SmartContract(models.Model):
 
         if not created:
             # If the instance already exists, update its fields
-            instance.referalReward = referal_reward
+            instance.totalSupply = referal_reward
             instance.claimedSupply = claimed_supply
             instance.isClaimingEnabled = is_claiming_enabled
             instance.save()
