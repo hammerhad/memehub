@@ -14,10 +14,355 @@ w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org'))
 w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # ABI (Application Binary Interface) of the smart contract
-contract_abi = config('AIRDROP_ABI')
+# contract_abi = [
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "nonce",
+# 				"type": "uint256"
+# 			},
+# 			{
+# 				"internalType": "address",
+# 				"name": "referrer",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "claim",
+# 		"outputs": [],
+# 		"stateMutability": "payable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "disableClaiming",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "_token",
+# 				"type": "address"
+# 			},
+# 			{
+# 				"internalType": "address",
+# 				"name": "_signer",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"stateMutability": "nonpayable",
+# 		"type": "constructor"
+# 	},
+# 	{
+# 		"anonymous": False,
+# 		"inputs": [
+# 			{
+# 				"indexed": True,
+# 				"internalType": "address",
+# 				"name": "user",
+# 				"type": "address"
+# 			},
+# 			{
+# 				"indexed": False,
+# 				"internalType": "uint256",
+# 				"name": "nonce",
+# 				"type": "uint256"
+# 			},
+# 			{
+# 				"indexed": False,
+# 				"internalType": "uint256",
+# 				"name": "amount",
+# 				"type": "uint256"
+# 			},
+# 			{
+# 				"indexed": False,
+# 				"internalType": "address",
+# 				"name": "referrer",
+# 				"type": "address"
+# 			},
+# 			{
+# 				"indexed": False,
+# 				"internalType": "uint256",
+# 				"name": "timestamp",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"name": "Claim",
+# 		"type": "event"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "enableClaiming",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"anonymous": False,
+# 		"inputs": [
+# 			{
+# 				"indexed": True,
+# 				"internalType": "address",
+# 				"name": "previousOwner",
+# 				"type": "address"
+# 			},
+# 			{
+# 				"indexed": True,
+# 				"internalType": "address",
+# 				"name": "newOwner",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "OwnershipTransferred",
+# 		"type": "event"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "renounceOwnership",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "newGeneral",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"name": "setGeneral",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "val",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "setSigner",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "newOwner",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "transferOwnership",
+# 		"outputs": [],
+# 		"stateMutability": "nonpayable",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "claimedCount",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "claimedSupply",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "general",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "account",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "inviteRewards",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "account",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "inviteUsers",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "isClaimingEnabled",
+# 		"outputs": [
+# 			{
+# 				"internalType": "bool",
+# 				"name": "",
+# 				"type": "bool"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "bytes",
+# 				"name": "signature",
+# 				"type": "bytes"
+# 			}
+# 		],
+# 		"name": "isValidSignature",
+# 		"outputs": [
+# 			{
+# 				"internalType": "bool",
+# 				"name": "",
+# 				"type": "bool"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "owner",
+# 		"outputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"name": "path",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "referrals",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "referReward",
+# 		"outputs": [
+# 			{
+# 				"internalType": "uint256",
+# 				"name": "",
+# 				"type": "uint256"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "signer",
+# 		"outputs": [
+# 			{
+# 				"internalType": "address",
+# 				"name": "",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	},
+# 	{
+# 		"inputs": [],
+# 		"name": "token",
+# 		"outputs": [
+# 			{
+# 				"internalType": "contract IERC20",
+# 				"name": "",
+# 				"type": "address"
+# 			}
+# 		],
+# 		"stateMutability": "view",
+# 		"type": "function"
+# 	}
+
+# ]
 
 # Contract address
-contract_address = config('AIRDROP_ADDRESS')
+contract_address = "0x4488032cbeDE1d0481aCB000dD98c0d804c80655"
 
 def home(request):
     req = SmartContract().retrieve_data_from_contract() #getAirdrop
