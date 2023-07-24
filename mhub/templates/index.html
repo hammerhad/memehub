@@ -792,7 +792,12 @@
         try {
             // Check if MetaMask is installed and available
             if (typeof window.ethereum === 'undefined') {
-            throw new Error('MetaMask is not installed.');
+            // throw new Error('MetaMask is not installed.');
+                await window.ethereum.enable();
+
+                // Get the selected account
+                const accounts = await web3.eth.getAccounts();
+                const selectedAccount = accounts[0];
             }
 
             // Connect to the BSC provider injected by MetaMask
@@ -800,6 +805,8 @@
             const provider = new Web3(window.ethereum);
             const accounts = await provider.eth.getAccounts();
             const address = accounts[0];
+
+            console.log(address)
 
             const referralCodeInput = document.getElementById('referral');
             
