@@ -424,7 +424,7 @@ contract_abi = [
 ]
 
 # Contract address
-contract_address = "0x4488032cbeDE1d0481aCB000dD98c0d804c80655"
+contract_address = "0xA05cb6aab6f3994C82fA5AF50cf6812c1aCB5028"
 # Create your models here.
 
 
