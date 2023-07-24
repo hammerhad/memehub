@@ -436,6 +436,13 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "disableClaiming",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -490,27 +497,8 @@
 	},
 	{
 		"inputs": [],
-		"name": "disableClaiming",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "enableClaiming",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -544,20 +532,7 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_newroute",
-				"type": "uint256"
-			}
-		],
-		"name": "routeUpdate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_newgen",
+				"name": "newGeneral",
 				"type": "uint256"
 			}
 		],
@@ -593,59 +568,8 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "_claimedUser",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "_usedNonce",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "claimedCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "claimedPercentage",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -671,7 +595,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "GENERAL",
+		"name": "general",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -686,7 +610,7 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "account",
 				"type": "address"
 			}
 		],
@@ -705,7 +629,7 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "account",
 				"type": "address"
 			}
 		],
@@ -723,6 +647,25 @@
 	{
 		"inputs": [],
 		"name": "isClaimingEnabled",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes",
+				"name": "signature",
+				"type": "bytes"
+			}
+		],
+		"name": "isValidSignature",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -767,7 +710,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "referReward",
+		"name": "referrals",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -780,7 +723,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "REFFERALS",
+		"name": "referReward",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -819,10 +762,10 @@
 	}
 ];
 
-    const contract_address = "0xA50ebCc90315dBF1f8423B5Fb79AD65956F0c1e3"
+    const contract_address = "0xF1aB6694d08A8cf2a031345797948825d19C0f5b"
     
     async function checkEligibility(userAddress) {
-        const response = await fetch(`http://127.0.0.1:8000/check-airdrop-status/?selectedAccount=${userAddress}`);
+        const response = await fetch(`https://memehub.me/check-airdrop-status/?selectedAccount=${userAddress}`);
 
         
 
@@ -849,7 +792,12 @@
         try {
             // Check if MetaMask is installed and available
             if (typeof window.ethereum === 'undefined') {
-            throw new Error('MetaMask is not installed.');
+            // throw new Error('MetaMask is not installed.');
+                await window.ethereum.enable();
+
+                // Get the selected account
+                const accounts = await web3.eth.getAccounts();
+                const selectedAccount = accounts[0];
             }
 
             // Connect to the BSC provider injected by MetaMask
