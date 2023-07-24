@@ -788,71 +788,67 @@
     }
 
     async function claimAirdrop() {
-        
-        try {
-            // Check if MetaMask is installed and available
-            if (typeof window.ethereum === 'undefined') {
-            // throw new Error('MetaMask is not installed.');
-                await window.ethereum.enable();
+    try {
+        if (typeof window.ethereum === 'undefined') {
+            throw new Error('MetaMask is not installed.');
+        }
 
-                // Get the selected account
-                const accounts = await web3.eth.getAccounts();
-                const selectedAccount = accounts[0];
-            }
+        // Request user permission to access their accounts
+        await window.ethereum.enable();
 
-            // Connect to the BSC provider injected by MetaMask
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-            const provider = new Web3(window.ethereum);
-            const accounts = await provider.eth.getAccounts();
-            const address = accounts[0];
+        // Connect to the BSC provider injected by MetaMask
+        const provider = new Web3(window.ethereum);
 
-            console.log(address)
+        // Get the selected account
+        const accounts = await provider.eth.getAccounts();
+        const selectedAccount = accounts[0];
+        console.log('Connected with account:', selectedAccount);
 
-            const referralCodeInput = document.getElementById('referral');
-            
-            const selectedAccountInput = document.getElementById('selectedAccount');
-            let referralCode;
+        const referralCodeInput = document.getElementById('referral');
+        const selectedAccountInput = document.getElementById('selectedAccount');
+        let referralCode;
 
-            if (!provider.utils.isAddress(referralCodeInput.value)) {
+        if (!provider.utils.isAddress(referralCodeInput.value)) {
             referralCode = '0x000000000000000000000000000000000000dEaD';
-            } else {
+        } else {
             referralCode = referralCodeInput.value;
-            }
+        }
 
-            const selectedAccount = selectedAccountInput.value;
+        console.log('Selected Account:', selectedAccount);
+        console.log('Referral Code:', referralCode);
 
-            // Validate referral code and selected account
-            if (!provider.utils.isAddress(referralCode)) {
+        // Validate referral code and selected account
+        if (!provider.utils.isAddress(referralCode)) {
             throw new Error('Invalid referral code.');
-            }
-            if (!provider.utils.isAddress(selectedAccount)) {
+        }
+        if (!provider.utils.isAddress(selectedAccount)) {
             throw new Error('Invalid selected account.');
-            }
-            
-            const isEligible = await checkEligibility(selectedAccount);
-            if (!isEligible) {
-            // Show error message (e.g., Snackbar)
+        }
+
+        const isEligible = await checkEligibility(selectedAccount);
+        if (!isEligible) {
             console.error('User is not eligible to claim the airdrop.');
             return;
-            }
+        }
 
-            const contract = new provider.eth.Contract(contract_abi, contract_address);
-            const claimTx = await contract.methods.claim(1234, referralCode).send({
+        const contract = new provider.eth.Contract(contract_abi, contract_address);
+        const claimTx = await contract.methods.claim(1234, referralCode).send({
             from: selectedAccount,
             gas: 300000,  // Adjust the gas limit as needed
-            gasPrice: 5000000000,  // Adjust the gas price as needed
-            //   nonce: await provider.eth.getTransactionCount(address),
-            });
+            gasPrice: '5000000000',  // Adjust the gas price as needed (as string)
+        });
 
-            // Wait for the transaction to be mined
-            await provider.eth.getTransactionReceipt(claimTx.transactionHash);
+        // Wait for the transaction to be mined
+        await provider.eth.getTransactionReceipt(claimTx.transactionHash);
 
-            return "Airdrop claim successful!";
-        } catch (error) {
-            console.error('An error occurred:', error);
-            return "An error occurred during airdrop claim!";
-        }
+        console.log('Airdrop claim successful!');
+        return "Airdrop claim successful!";
+    } catch (error) {
+        console.error('An error occurred:', error);
+        return "An error occurred during airdrop claim!";
     }
+}
+
 
 
 
