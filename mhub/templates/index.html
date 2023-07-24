@@ -120,6 +120,41 @@
                                 </ul>
                             </nav>
                         </div><!-- .header-navbar @e -->
+
+
+
+                        <script>
+                            // Check if Web3 provider is available
+                            if (window.ethereum) {
+                                // Initialize Web3 object
+                                const web3 = new Web3(window.ethereum);
+                    
+                                // Request user permission to access their accounts
+                                document.getElementById('connectBtn').addEventListener('click', async () => {
+                                    try {
+                                        // Request user permission to access their accounts
+                                        await window.ethereum.enable();
+                    
+                                        // Get the selected account
+                                        const accounts = await web3.eth.getAccounts();
+                                        const selectedAccount = accounts[0];
+                    
+                                        // Use the selected account for further operations
+                                        console.log('Connected with account:', selectedAccount);
+                    
+                                        // Update the wallet status
+                                        // document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
+                    
+                                        // Update the button text to show the connected wallet address
+                                        document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
+                                    } catch (error) {
+                                        console.error('Error connecting wallet:', error);
+                                    }
+                                });
+                            } else {
+                                console.error('Web3 provider not found. Please install Metamask.');
+                            }
+                        </script>
                     </div>
                 </div>
             </div><!-- .header-main @e -->
