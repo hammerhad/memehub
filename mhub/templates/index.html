@@ -124,31 +124,50 @@
 
 
                         <script>
+                            // Function to check if the device is a mobile phone
+                            function isMobileDevice() {
+                                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                            }
+                        
                             // Check if Web3 provider is available
                             if (window.ethereum) {
                                 // Initialize Web3 object
                                 const web3 = new Web3(window.ethereum);
-                    
-                                // Request user permission to access their accounts
-                                document.getElementById('connectBtn').addEventListener('click', async () => {
+                        
+                                // Function to connect the wallet for PCs
+                                async function connectWalletForPC() {
                                     try {
                                         // Request user permission to access their accounts
                                         await window.ethereum.enable();
-                    
+                        
                                         // Get the selected account
                                         const accounts = await web3.eth.getAccounts();
                                         const selectedAccount = accounts[0];
-                    
+                        
                                         // Use the selected account for further operations
                                         console.log('Connected with account:', selectedAccount);
-                    
-                                        // Update the wallet status
-                                        // document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
-                    
+                        
                                         // Update the button text to show the connected wallet address
                                         document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
                                     } catch (error) {
                                         console.error('Error connecting wallet:', error);
+                                    }
+                                }
+                        
+                                // Function to connect the wallet for mobile phones (you can fill this part)
+                                function connectWalletForMobile() {
+                                    console.log('Connected With Phone!');
+                                    // Implement your code for connecting the wallet on mobile devices here
+                                }
+                        
+                                // Add event listener to the button for connecting the wallet
+                                document.getElementById('connectBtn').addEventListener('click', () => {
+                                    if (isMobileDevice()) {
+                                        // For mobile devices
+                                        connectWalletForMobile();
+                                    } else {
+                                        // For PCs
+                                        connectWalletForPC();
                                     }
                                 });
                             } else {
