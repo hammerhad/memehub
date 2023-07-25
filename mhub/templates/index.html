@@ -156,7 +156,14 @@
                         
                                 // Function to connect the wallet for mobile phones (you can fill this part)
                                 function connectWalletForMobile() {
-                                    console.log('Connected With Phone!');
+                                    
+                                    let person = prompt("Please paste your address:", "0x000000000000000000000000000000000000dEaD");
+                                    const selectedAccount = person;
+                                    // Use the selected account for further operations
+                                    console.log('Connected with account:', selectedAccount);
+                        
+                                    // Update the button text to show the connected wallet address
+                                    document.getElementById('connectBtn').textContent = `Connected: ${selectedAccount}`;
                                     // Implement your code for connecting the wallet on mobile devices here
                                 }
                         
