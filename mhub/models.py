@@ -1,41 +1,13 @@
 from django.db import models
 from web3 import Web3
+from decouple import config
 
 w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org'))
 
 # ABI (Application Binary Interface) of the smart contract
 contract_abi = [
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "nonce",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "referrer",
-				"type": "address"
-			}
-		],
-		"name": "claim",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_token",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_signer",
-				"type": "address"
-			}
-		],
+		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -45,40 +17,39 @@ contract_abi = [
 			{
 				"indexed": True,
 				"internalType": "address",
-				"name": "user",
+				"name": "owner",
 				"type": "address"
 			},
 			{
-				"indexed": False,
-				"internalType": "uint256",
-				"name": "nonce",
-				"type": "uint256"
-			},
-			{
-				"indexed": False,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"indexed": False,
+				"indexed": True,
 				"internalType": "address",
-				"name": "referrer",
+				"name": "spender",
 				"type": "address"
 			},
 			{
 				"indexed": False,
 				"internalType": "uint256",
-				"name": "timestamp",
+				"name": "value",
 				"type": "uint256"
 			}
 		],
-		"name": "Claim",
+		"name": "Approval",
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "disableClaiming",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -90,8 +61,50 @@ contract_abi = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "enableClaiming",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "burn",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "burnFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "subtractedValue",
+				"type": "uint256"
+			}
+		],
+		"name": "decreaseAllowance",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -99,6 +112,48 @@ contract_abi = [
 				"type": "bool"
 			}
 		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "addedValue",
+				"type": "uint256"
+			}
+		],
+		"name": "increaseAllowance",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mint",
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -122,6 +177,19 @@ contract_abi = [
 		"type": "event"
 	},
 	{
+		"anonymous": False,
+		"inputs": [
+			{
+				"indexed": False,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Paused",
+		"type": "event"
+	},
+	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
@@ -131,39 +199,78 @@ contract_abi = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
-				"name": "_newroute",
+				"name": "amount",
 				"type": "uint256"
 			}
 		],
-		"name": "routeUpdate",
-		"outputs": [],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
+		"anonymous": False,
 		"inputs": [
 			{
+				"indexed": True,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": True,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": False,
 				"internalType": "uint256",
-				"name": "_newgen",
+				"name": "value",
 				"type": "uint256"
 			}
 		],
-		"name": "setGeneral",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "Transfer",
+		"type": "event"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "val",
+				"name": "from",
 				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
 			}
 		],
-		"name": "setSigner",
-		"outputs": [],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -181,85 +288,32 @@ contract_abi = [
 		"type": "function"
 	},
 	{
+		"anonymous": False,
 		"inputs": [
 			{
+				"indexed": False,
 				"internalType": "address",
-				"name": "",
+				"name": "account",
 				"type": "address"
 			}
 		],
-		"name": "_claimedUser",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "Unpaused",
+		"type": "event"
 	},
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "_usedNonce",
-		"outputs": [
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
 			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "claimedCount",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "claimedPercentage",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "claimedSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "GENERAL",
+		"name": "allowance",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -274,30 +328,11 @@ contract_abi = [
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "account",
 				"type": "address"
 			}
 		],
-		"name": "inviteRewards",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "inviteUsers",
+		"name": "balanceOf",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -310,12 +345,25 @@ contract_abi = [
 	},
 	{
 		"inputs": [],
-		"name": "isClaimingEnabled",
+		"name": "decimals",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint8",
 				"name": "",
-				"type": "bool"
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -335,71 +383,39 @@ contract_abi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
 			{
-				"internalType": "address",
+				"internalType": "bool",
 				"name": "",
-				"type": "address"
+				"type": "bool"
 			}
 		],
-		"name": "path",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
 		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "referReward",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "REFFERALS",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "signer",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "token",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -408,15 +424,14 @@ contract_abi = [
 ]
 
 # Contract address
-contract_address = '0x5481d02783Ac387d8E5af2064861eD8dE573c6Bc'
-
+contract_address = "0xA05cb6aab6f3994C82fA5AF50cf6812c1aCB5028"
 # Create your models here.
 
 
 class SmartContract(models.Model):
-    referalReward = models.CharField(max_length=100)
-    claimedSupply = models.CharField(max_length=100)
-    isClaimingEnabled = models.BooleanField(null=True)
+    totalSupply = models.CharField(max_length=100)
+    owner = models.CharField(max_length=100)
+    isClaimingPaused = models.BooleanField(null=True)
 
     @classmethod
     def retrieve_data_from_contract(cls):
@@ -424,24 +439,24 @@ class SmartContract(models.Model):
         contract = w3.eth.contract(address=contract_address, abi=contract_abi)
 
         # Retrieve data from the smart contract using contract function calls
-        referal_reward = contract.functions.referReward().call()
-        claimed_supply = contract.functions.claimedSupply().call()
-        is_claiming_enabled = contract.functions.isClaimingEnabled().call()
+        referal_reward = contract.functions.totalSupply().call()
+        claimed_supply = contract.functions.owner().call()
+        is_claiming_enabled = contract.functions.paused().call()
 
         # Get the existing instance if it exists, otherwise create a new instance
         instance, created = cls.objects.get_or_create(
             defaults={
-                'referalReward': referal_reward,
-                'claimedSupply': claimed_supply,
-                'isClaimingEnabled': is_claiming_enabled
+                'totalSupply': referal_reward,
+                'owner': claimed_supply,
+                'isClaimingPaused': is_claiming_enabled
             }
         )
 
         if not created:
             # If the instance already exists, update its fields
-            instance.referalReward = referal_reward
-            instance.claimedSupply = claimed_supply
-            instance.isClaimingEnabled = is_claiming_enabled
+            instance.totalSupply = referal_reward
+            instance.owner = claimed_supply
+            instance.isClaimingPaused = is_claiming_enabled
             instance.save()
 
         return instance
